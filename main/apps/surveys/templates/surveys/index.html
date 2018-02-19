@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Survey Form</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+    <form action="/result" method="POST">
+        {% csrf_token %}
+        <p><label for="name">Your Name:<input type="text" name="name" id="name"></label></p>
+        <p><label for="location">Dojo Location:
+        <select name="location" id="location">
+            <option value="Chicago">Chicago</option>
+            <option value="Seattle">Seattle</option>
+            <option value="New York">New York</option>
+        </select>
+        </label></p>
+        <p><label for="lang">Favorite Language:
+            <select name="lang" id="lang">
+                <option value="Python">Python</option>
+                <option value="Javascript">Javascript</option>
+                <option value="PHP">PHP</option>
+            </select>
+        </label></p>
+        <p><label for="comment">Comment(Optional):<input type="textarea" name="comment" id="comment"></label></p>
+        <p><input type="submit" value="Submit"></p>
+    </form>
+    </body>
+</html>
