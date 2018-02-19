@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'apps.first_app',
-    'apps.amadon'
+    'apps.ninja_gold'
 ]
 
 MIDDLEWARE = [
