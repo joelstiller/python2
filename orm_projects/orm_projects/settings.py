@@ -37,8 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'apps.users',
-    'apps.dojo_ninjas',
+    'apps.rest_users',
 ]
 
 MIDDLEWARE = [
