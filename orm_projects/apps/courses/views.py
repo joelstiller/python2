@@ -12,52 +12,25 @@ def index(request):
     return render(request, 'courses/index.html', context)
 
 def new(request):
-    return render(request, "rest_users/create.html")
-
-
-def create(request):
-    errors = User.objects.validate(request.POST)
+    errors = Course.objects.validate(request.POST)
     if len(errors):
         for field, message in errors.iteritems():
             error(request, message, extra_tags=field)
         
-        return redirect('/users/new')
+        return redirect('/courses')
 
-    User.objects.create(
-        first_name=request.POST['first_name'],
-        last_name=request.POST['last_name'],
-        email=request.POST['email'],
+    Course.objects.create(
+        course_name=request.POST['course_name'],
+        description=request.POST['description'],
     )
-    return redirect('/users')
+    return redirect('/courses')
 
-def edit(request, user_id):
+def areyousure(request, course_id):
     context = {
-        'user': User.objects.get(id=user_id)
+        'course': Course.objects.get(id=course_id)
     }
-    return render(request, 'rest_users/update.html', context)
+    return render(request, 'courses/areyousure.html', context)
 
-def update(request, user_id):
-    errors = User.objects.validate(request.POST)
-    if len(errors):
-        for field, message in errors.iteritems():
-            error(request, message, extra_tags=field)
-        
-        return redirect('/users/{}/edit'.format(user_id))
-
-    user_to_update = User.objects.get(id=user_id)
-    user_to_update.first_name = request.POST['first_name']
-    user_to_update.last_name = request.POST['last_name']
-    user_to_update.email = request.POST['email']
-    user_to_update.save()
-    return redirect('/users')
-
-def show(request, user_id):
-    context = {
-        'user': User.objects.get(id=user_id)
-    }
-    return render(request, 'rest_users/show.html', context)
-
-
-def destroy(request, user_id):
-    Course.objects.get(id=user_id).delete()
-    return redirect('/)
+def destroy(request, course_id):
+    Course.objects.get(id=course_id).delete()
+    return redirect('/')

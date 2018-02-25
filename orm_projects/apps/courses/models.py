@@ -9,7 +9,7 @@ class CourseManager(models.Manager):
         # check all fields for emptyness
         for field, value in post_data.iteritems():
             if len(value) < 1:
-                errors[field] = "{} field is reqired".format(field.replace('_', ' '))
+                errors[field] = "{} field is required".format(field.replace('_', ' '))
 
             # check name fields for min length
             if field == "course_name":
@@ -17,7 +17,7 @@ class CourseManager(models.Manager):
                     errors[field] = "{} field must bet at least 5 characters".format(field.replace('_', ' '))
             if field == "description":
                 if not field in errors and len(value) < 15:
-                    errors[field] = "{} field must bet at least 5 characters".format(field.replace('_', ' '))               
+                    errors[field] = "{} field must bet at least 15 characters".format(field.replace('_', ' '))               
         return errors
 
 class Course(models.Model):
